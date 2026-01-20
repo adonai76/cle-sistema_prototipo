@@ -79,5 +79,13 @@ Route::prefix('general')->name('general.')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // POST es la mejor práctica para logout
 });
 
+Route::get('/instalar-base-datos', function () {
+    try {
+        \Artisan::call('migrate', ['--force' => true]);
+        return '¡ÉXITO! Las tablas se han creado correctamente en Supabase.';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
 
 
