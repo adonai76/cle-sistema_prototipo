@@ -25,10 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrapFive(); // Mantenemos tu configuración de paginación
+        Paginator::useBootstrapFive();
 
-        // Agregamos esto para arreglar el diseño en Render:
         if($this->app->environment('production')) {
             URL::forceScheme('https');
         }
     }
+}
