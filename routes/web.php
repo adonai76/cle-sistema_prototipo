@@ -88,4 +88,16 @@ Route::get('/instalar-base-datos', function () {
     }
 });
 
+Route::get('/sembrar-todo', function () {
+    try {
+        Artisan::call('db:seed', [
+            '--force' => true // Obligatorio para producción
+        ]);
+        
+        return 'Base de datos poblada al 100% (Usuarios, Roles, Carreras y Cursos).';
+    } catch (\Exception $e) {
+        return 'Hubo un error: ' . $e->getMessage();
+    }
+});
+
 
