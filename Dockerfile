@@ -23,4 +23,4 @@ RUN composer install --no-dev --optimize-autoloader
 EXPOSE 8000
 
 # 7. Comando para encender el servidor
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=8000
