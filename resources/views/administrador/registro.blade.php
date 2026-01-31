@@ -140,6 +140,16 @@
                         <span class="error">{{ $message }}</span>
                         <br>
                     @enderror
+                    <label for="nivel">Nivel: </label>
+                    <select name="nivel" id="nivel" value="{{ old('nivel') }}">
+                        @foreach ($niveles as $nivel)
+                            <option value="{{ $nivel->id }}">{{ $nivel->nombre_nivel }}</option>
+                        @endforeach
+                    </select>
+                    @error('nivel')
+                        <span class="error">{{ $message }}</span>
+                        <br>
+                    @enderror
                 </div>
 
                 <div id="adminForm" style="display:none">
