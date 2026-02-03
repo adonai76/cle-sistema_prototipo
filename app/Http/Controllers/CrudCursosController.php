@@ -15,8 +15,8 @@ class CrudCursosController extends Controller
         Curso::create([
             'id_docente' => $request->docente_curso,
             'id_nivel' => $request->modulo_curso,
-            'modelo_solucion_curso' => $request->modelo_solucion_curso,
-            'tecnm_curso' => $request->tecnm_curso,
+            'modelo_solucion_curso' => "N/A",
+            'tecnm_curso' => "N/A",
             'modelo_curso' => $request->modelo_curso,
             'nombre_tms_curso' => $request->nombre_tms_curso,
             'inicio_curso' => $request->inicio_curso,
@@ -27,9 +27,9 @@ class CrudCursosController extends Controller
             'cupo_curso' => $request->cupo_curso,
             'clases_via_curso' => $request->clases_via_curso,
             'tipo_curso' => $request->tipo_curso,
-            'acceso_plataforma_curso' => $request->acceso_plataforma_curso,
-            'acceso_teams_curso' => $request->acceso_teams_curso,
-            'link_clase_curso' => $request->link_clase_curso,
+            'acceso_plataforma_curso' => "N/A",
+            'acceso_teams_curso' => "N/A",
+            'link_clase_curso' => "N/A",
         ]);
 
         return redirect(route('admin.registro_cursos'))->with('success', 'Curso registrado correctamente');
@@ -62,8 +62,6 @@ class CrudCursosController extends Controller
         if ($curso) {
             $curso->update([
                 'id_docente' => $request->docente_curso,
-                'modelo_solucion_curso' => $request->modelo_solucion_curso,
-                'tecnm_curso' => $request->tecnm_curso,
                 'modelo_curso' => $request->modelo_curso,
                 'modulo_curso' => $request->modulo_curso,
                 'nombre_tms_curso' => $request->nombre_tms_curso,
@@ -74,9 +72,6 @@ class CrudCursosController extends Controller
                 'cupo_curso' => $request->cupo_curso,
                 'clases_via_curso' => $request->clases_via_curso,
                 'tipo_curso' => $request->tipo_curso,
-                'acceso_plataforma_curso' => $request->acceso_plataforma_curso,
-                'acceso_teams_curso' => $request->acceso_teams_curso,
-                'link_clase_curso' => $request->link_clase_curso,
             ]);
 
             return redirect(route('admin.registro_cursos'))->with('success', 'Curso actualizado correctamente');

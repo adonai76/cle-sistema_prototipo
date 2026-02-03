@@ -17,11 +17,6 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="modelo_solucion_curso">Modelo de solución del curso:</label>
-                <input type="text" name="modelo_solucion_curso" id="modelo_solucion_curso" class="form-control"
-                    value="{{ $curso->modelo_solucion_curso }}" required>
-            </div>
-            <div class="form-group">
                 <label for="docente_curso">Docente:</label>
                 <select name="docente_curso" id="docente_curso" class="form-control">
                     <option value="" selected>...</option>
@@ -32,11 +27,6 @@
                         </option>
                     @endforeach
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="tecnm_curso">TENM Curso:</label>
-                <input type="text" name="tecnm_curso" id="tecnm_curso" class="form-control"
-                    value="{{ $curso->tecnm_curso }}" required>
             </div>
             <div class="form-group">
                 <label for="modelo_curso">Modelo del curso:</label>
@@ -86,21 +76,6 @@
                 <label for="clases_via_curso">Clases vía curso:</label>
                 <input type="text" name="clases_via_curso" id="clases_via_curso" class="form-control"
                     value="{{ $curso->clases_via_curso }}">
-            </div>
-            <div class="form-group">
-                <label for="acceso_plataforma_curso">Acceso a la plataforma:</label>
-                <input type="text" name="acceso_plataforma_curso" id="acceso_plataforma_curso" class="form-control"
-                    value="{{ $curso->acceso_plataforma_curso }}">
-            </div>
-            <div class="form-group">
-                <label for="acceso_teams_curso">Acceso a Teams del curso:</label>
-                <input type="text" name="acceso_teams_curso" id="acceso_teams_curso" class="form-control"
-                    value="{{ $curso->acceso_teams_curso }}">
-            </div>
-            <div class="form-group">
-                <label for="link_clase_curso">Link de la clase:</label>
-                <input type="text" name="link_clase_curso" id="link_clase_curso" class="form-control"
-                    value="{{ $curso->link_clase_curso }}">
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
