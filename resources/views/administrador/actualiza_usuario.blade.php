@@ -55,9 +55,18 @@
             </option>
         </select>
         <br>
-        <label for="nivel">Nivel del alumno:
-            <p>{{ $data_alumno->nivel->nombre_nivel }} ({{ $data_alumno->nivel->mcr_nivel }})</p>
-        </label>
+        <label for="nivel">Nivel del alumno:</label>
+        <select name="nivel" id="nivel">
+            <option value="">Selecciona un nivel...</option>
+            @if(isset($niveles))
+                @foreach($niveles as $nivel)
+                    <option value="{{ $nivel->id }}" @if($data_alumno->id_nivel == $nivel->id) selected @endif>
+                        {{ $nivel->nombre_nivel }} ({{ $nivel->mcr_nivel }})
+                    </option>
+                @endforeach
+            @endif
+        </select>
+        <br>
         <label for="inscrito">Status de inscripción:
             @if ($data_alumno->inscrito == 1)
             <p>Inscrito</p>

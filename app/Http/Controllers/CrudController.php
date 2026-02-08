@@ -254,10 +254,11 @@ class CrudController extends Controller
         }
 
         // Estos dos son iportantes para la vista destino
+        $niveles = Nivel::all();
         $carreras = Carrera::all();
         $archivos = $usuario->archivos; // Estos son para manipularse (Hay que revisarlo)
 
-        return view('administrador.actualiza_usuario', compact('usuario', 'tipo', 'data_alumno', 'data_docente', 'carreras', 'archivos'));
+        return view('administrador.actualiza_usuario', compact('usuario', 'tipo', 'data_alumno', 'data_docente', 'carreras', 'archivos', 'niveles'));
     }
 
     /*
@@ -275,6 +276,7 @@ class CrudController extends Controller
         $usuario->phonenumber = $request->telefono;
 
         //Datos de alumno
+        $alumno->id_nivel = $request->nivel;
         $alumno->matricula_alumno = $request->matricula_alumno;
         $alumno->semestre_alumno = $request->semestre_alumno;
         $alumno->nombre_alumno = $request->nombre_alumno;
