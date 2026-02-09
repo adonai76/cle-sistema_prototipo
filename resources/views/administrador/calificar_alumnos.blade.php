@@ -23,12 +23,12 @@
         <button id="btn-cerrar-modal" class="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
             </svg></button>
-        <h2>Registrar Curso</h2>
+        <h2>Registrar Calificación</h2>
         <form action="{{ route('admin.calificaciones.create', $alumno->id_alumno) }}" method="POST" class="form-agregar">
             @csrf
             <div id="datos_generales" class="contenedor-info-general">
                 <h3>Datos de la calificación</h3>
-                <label for="nivel">Nivel del cursado:</label>
+                <label for="nivel">Nivel cursado:</label>
                 <select id="nivel" name="nivel">
                     <option value="" selected>...</option>
                     @foreach ($niveles as $nivel)
@@ -40,7 +40,7 @@
                 <input type="text" id="periodo" name="periodo" required>
                 <br>
                 <label for="calificacion">Calificación:</label>
-                <input type="number" id="calificacion" name="calificacion" min="0" max="100" required>
+                <input type="number" id="calificacion" name="calificacion" min="0" max="100" step=".01" required>
                 <br>
             </div>
             <button type="submit" id="button_enviar" class="button_enviar">Agregar</button>
@@ -57,7 +57,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($alumno->kardex as $registro)
+            @foreach ($kardex as $registro)
             <tr>
                 <td>
                     <p>{{ $registro->nivel->nombre_nivel }}</p>
@@ -66,7 +66,7 @@
                     <form action="{{ route('admin.calificaciones.update', $registro->id) }}" method="POST" style="display: flex; gap: 10px; align-items: center;">
                         @csrf
                         @method('PUT')
-                        <input type="number" name="calificacion" value="{{ $registro->calificacion }}" min="0" max="100" required style="flex: 1;">
+                        <input type="number" name="calificacion" value="{{ $registro->calificacion }}" min="0" max="100" step=".01" required style="flex: 1;">
                         <button type="submit" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
                                 <path d="M11 2H9v3h2z" />
