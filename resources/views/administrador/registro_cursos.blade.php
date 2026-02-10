@@ -23,8 +23,8 @@
                             {{ optional($docentes->firstWhere('id_docente', $grupo->id_docente))->docente_nombre ?? 'No encontrado' }}
                         </p>
                         <p>TMS: {{ $grupo->nombre_tms_curso }}</p>
-                        <p>Modelo del curso: {{ $grupo->modelo_curso }}</p>
-                        <p>Módulo del curso: {{ $grupo->nivel->nombre_nivel }} </p>
+                        <p>Tipo de curso: {{ $grupo->modelo_curso }}</p>
+                        <p>Nivel del curso: {{ $grupo->nivel->nombre_nivel }} </p>
                         <p>Días del curso: {{ $grupo->dias_curso }}</p>
                         <p>Horarios del curso: {{ $grupo->horario_curso }}</p>
                         <div class="gestionar">
@@ -80,9 +80,6 @@
 
                 <div id="datos_generales" class="contenedor-info-general">
                     <h3>Datos Generales del curso</h3>
-                    <label for="modelo_solucion_curso">Modelo de solución del curso:</label>
-                    <input type="text" id="modelo_solucion_curso" name="modelo_solucion_curso" required>
-                    <br>
                     <label for="docente_curso">Docente :</label>
                     <select id="docente_curso" name="docente_curso">
                         <option value="" selected>...</option>
@@ -91,13 +88,10 @@
                         @endforeach
                     </select>
                     <br>
-                    <label for="tecnm_curso">TENM Curso:</label>
-                    <input type="text" id="tecnm_curso" name="tecnm_curso" required>
-                    <br>
-                    <label for="modelo_curso">Modelo del curso:</label>
+                    <label for="modelo_curso">Tipo de curso:</label>
                     <input type="text" id="modelo_curso" name="modelo_curso" required>
                     <br>
-                    <label for="modulo_curso">Módulo del curso:</label>
+                    <label for="modulo_curso">Nivel del curso:</label>
                     <select id="modulo_curso" name="modulo_curso">
                         <option value="" selected>...</option>
                         @foreach ($niveles as $nivel)
@@ -125,15 +119,6 @@
                     <br>
                     <label for="clases_via_curso">Clases vía curso:</label>
                     <input type="text" id="clases_via_curso" name="clases_via_curso">
-                    <br>
-                    <label for="acceso_plataforma_curso">Acceso a la plataforma:</label>
-                    <input type="text" id="acceso_plataforma_curso" name="acceso_plataforma_curso">
-                    <br>
-                    <label for="acceso_plataforma_curso">Acceso a teams del curso:</label>
-                    <input type="text" id="acceso_teams_curso" name="acceso_teams_curso">
-                    <br>
-                    <label for="link_clase_curso">Link de la clase:</label>
-                    <input type="text" id="link_clase_curso" name="link_clase_curso">
                     <br>
                 </div>
                 <button type="submit" id="button_enviar" class="button_enviar">Agregar</button>

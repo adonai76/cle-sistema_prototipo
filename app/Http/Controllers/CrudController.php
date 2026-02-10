@@ -39,6 +39,7 @@ class CrudController extends Controller
                     'carrera' => 'required|exists:carreras,id',
                     'nivel'=> 'required|exists:niveles,id',
                     'semestre' => 'required|integer|min:1|max:13',
+                    'verificado' => 'required'
                 ];
 
                 $messages = [
@@ -60,6 +61,7 @@ class CrudController extends Controller
                     'semestre.max' => 'El semestre no puede ser mayor a 13.',
                     'nombre.regex' => 'El nombre solo puede contener letras y espacios.',
                     'apellidos.regex' => 'Los apellidos solo pueden contener letras y espacios.',
+                    'verificado.regex' => 'Hay que seleccionar una opción de verificado'
                 ];
 
                 $validator = Validator::make($request->all(), $rules, $messages);
@@ -161,7 +163,7 @@ class CrudController extends Controller
                     'semestre_alumno' => $request->semestre,
                     'inscrito' => false,
                     'acredita' => false,
-                    'liberado' => false
+                    'liberado' => $request->verificado
                 ]);
 
                 $newUser->assignRole('alumno');
@@ -252,10 +254,11 @@ class CrudController extends Controller
         }
 
         // Estos dos son iportantes para la vista destino
+        $niveles = Nivel::all();
         $carreras = Carrera::all();
         $archivos = $usuario->archivos; // Estos son para manipularse (Hay que revisarlo)
 
-        return view('administrador.actualiza_usuario', compact('usuario', 'tipo', 'data_alumno', 'data_docente', 'carreras', 'archivos'));
+        return view('administrador.actualiza_usuario', compact('usuario', 'tipo', 'data_alumno', 'data_docente', 'carreras', 'archivos', 'niveles'));
     }
 
     /*
@@ -273,12 +276,14 @@ class CrudController extends Controller
         $usuario->phonenumber = $request->telefono;
 
         //Datos de alumno
+        $alumno->id_nivel = $request->nivel;
         $alumno->matricula_alumno = $request->matricula_alumno;
         $alumno->semestre_alumno = $request->semestre_alumno;
         $alumno->nombre_alumno = $request->nombre_alumno;
         $alumno->apellidos_alumno = $request->apellidos_alumno;
         $alumno->edad_alumno = $request->edad_alumno;
         $alumno->sexo_alumno = $request->sexo_alumno;
+        $alumno->liberado = $request->verificado;
 
         $usuario->save();
         $alumno->save();

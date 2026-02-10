@@ -150,6 +150,11 @@
                         <span class="error">{{ $message }}</span>
                         <br>
                     @enderror
+                    <label for="verificado" value="{{ old('verificado') }}">Verificado:</label>
+                    <select name="verificado" id="verificado">
+                        <option value="1">Verificado</option>
+                        <option value="0">No verificado</option>
+                    </select>
                 </div>
 
                 <div id="adminForm" style="display:none">

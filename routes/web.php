@@ -55,6 +55,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::delete('/inscripciones/{id_alumno}/{id_curso}', [InscripcionController::class, 'delete'])->name('inscripciones.delete');
     Route::get('/inscripciones/{id}', [InscripcionController::class, 'inscribirAdministrativo'])->name('inscribir');
     //Calificaciones - incompleto
+    Route::post('/calificaciones/{id_alumno}', [KardexController::class, 'create'])->name('calificaciones.create');
+    Route::delete('/calificaciones/{id_kardex}', [KardexController::class, 'delete'])->name('calificaciones.delete');
     Route::get('/calificaciones/{id_alumno}', [KardexController::class, 'show'])->name('calificaciones.show');
     Route::put('/calificaciones/{id_kardex}', [KardexController::class, 'update'])->name('calificaciones.update');
     //Gestión de los cursos
