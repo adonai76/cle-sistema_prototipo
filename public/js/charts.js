@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             datasets: [{
                 label: 'Alumnos por sexo',
                 data: Object.values(conteoSexo),
-                backgroundColor: ['#1B396A', '#FF6384'],
+                backgroundColor: ['#FF6384', '#1B396A'],
                 borderColor: 'white',
                 borderWidth: 1
             }]
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             datasets: [{
                 label: 'Alumnos inscritos',
                 data: Object.values(conteoInscritos),
-                backgroundColor: ['#1B396A', '#FF6384'],
+                backgroundColor: ['#FF6384', '#1B396A'],
                 borderColor: 'white',
                 borderWidth: 1
             }]
