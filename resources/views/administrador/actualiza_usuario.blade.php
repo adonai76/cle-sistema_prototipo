@@ -82,7 +82,7 @@
             <p>No acrédita</p>
             @endif
         </label>
-        <label for="verificado">Verificado:</label>
+        <label for="verificado">Check List:</label>
         <select name="verificado" id="verificado">
             <option value="1" @if ($data_alumno->liberado == '1') selected @endif>Verificado
             </option>

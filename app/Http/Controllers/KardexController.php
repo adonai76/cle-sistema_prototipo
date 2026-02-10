@@ -14,7 +14,7 @@ class KardexController extends Controller
     public function show($id_alumno)
     {
         $alumno = Alumno::find($id_alumno);
-        $kardex = $alumno->kardex;
+        $kardex = $kardex = $alumno->kardex()->orderBy('id_nivel', 'asc')->get();
         $calificar = Gestion::find(2);
         $niveles = Nivel::All();
 
