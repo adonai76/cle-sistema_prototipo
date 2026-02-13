@@ -22,13 +22,7 @@
                 <p>Seguimos mejorando las vistas :D</p>
             </div>
         </div>
-        {{--<div class="status"> Favor de acomodar el diseño del dashboard
-            <h2>Eventos</h2>
-            @foreach ($gestion as $a)
-                <p> {{ $a->nombre_accion }} : {{ $a->estado }}
-                <p>
-            @endforeach
-        </div>--}}
+        <p>Cantidad de alumnos inscritos: {{ $conteo_alumnos }}</p>
         <div class="graficos">
             <x-grafico id="alumnos_semestre" titulo="Alumnos por semestre" />
             <x-grafico id="alumnos_sexo" titulo="Alumnos por sexo" />

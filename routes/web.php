@@ -59,6 +59,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::delete('/calificaciones/{id_kardex}', [KardexController::class, 'delete'])->name('calificaciones.delete');
     Route::get('/calificaciones/{id_alumno}', [KardexController::class, 'show'])->name('calificaciones.show');
     Route::put('/calificaciones/{id_kardex}', [KardexController::class, 'update'])->name('calificaciones.update');
+    Route::put('/calificaciones/{id_kardex}/periodo', [KardexController::class, 'updatePeriodo'])->name('calificaciones.update.periodo');
     //Gestión de los cursos
     Route::get('/gestion', [GestionController::class, 'read'])->name('gestion');
     Route::put('/update_gestion/{id}', [GestionController::class, 'update'])->name('gestion.update');
@@ -81,6 +82,10 @@ Route::prefix('general')->name('general.')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // POST es la mejor práctica para logout
 });
 
+Route::get('/probar-error', function () {
+    abort(500);
+});
+
 Route::get('/instalar-base-datos', function () {
     try {
         \Artisan::call('migrate', ['--force' => true]);
@@ -95,7 +100,7 @@ Route::get('/sembrar-todo', function () {
         Artisan::call('db:seed', [
             '--force' => true // Obligatorio para producción
         ]);
-        
+
         return 'Base de datos poblada al 100% (Usuarios, Roles, Carreras y Cursos).';
     } catch (\Exception $e) {
         return 'Hubo un error: ' . $e->getMessage();

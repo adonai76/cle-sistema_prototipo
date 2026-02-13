@@ -47,8 +47,9 @@ class UserController extends Controller
 
             // Consulta para mostrar alumnos por sexo que esten cursando algún idioma
             $alumnos_inscritos = $alumnos->where('inscrito', 1);
+            $conteo_alumnos = $alumnos->where('liberado', 1)->count();
 
-            return view('administrador.dashboard', compact('admin', 'gestion', 'alumnos', 'docentes', 'alumnos_inscritos'));
+            return view('administrador.dashboard', compact('admin', 'gestion', 'alumnos', 'docentes', 'alumnos_inscritos', 'conteo_alumnos'));
         }
     }
 }

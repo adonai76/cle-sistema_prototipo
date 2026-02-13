@@ -17,8 +17,8 @@
         <label for="correo">Correo del usuario:</label>
         <input type="email" name="correo" value="{{ $usuario->email }}" placeholder="Correo de usuario">
         <br>
-        <label for="telefono">Correo del usuario:</label>
-        <input type="text" name="telefono" value="{{ $usuario->phonenumber }}" placeholder="Correo de usuario">
+        <label for="telefono">Teléfono del usuario:</label>
+        <input type="text" name="telefono" value="{{ $usuario->phonenumber }}" placeholder="Teléfono del usuario">
         <br>
         <!--<label for="contraseña">Contraseña:</label>
                                                                                                             <input type="password" name="contraseña" value="{{ $usuario->password }}" placeholder="Contraseña">
@@ -30,7 +30,13 @@
         <input type="text" name="matricula_alumno" value="{{ $data_alumno->matricula_alumno }}" placeholder="Matrícula del alumno">
         <br>
         <label for="carrera_alumno">Carrera:</label>
-        <input type="text" name="carrera_alumno" value="{{ $data_alumno->carrera->nombre_carrera }}" placeholder="Carrera del alumno" disabled>
+        <select name="carrera_alumno" id="carrera_alumno">
+            @foreach($carreras as $carrera)
+                <option value="{{ $carrera->id }}" @if($data_alumno->id_carrera == $carrera->id) selected @endif>
+                    {{ $carrera->nombre_carrera }}
+                </option>
+            @endforeach
+        </select>
         <br>
         <label for="plan_estudio_carrera">Plan de estudios:</label>
         <input type="text" name="plan_estudios_carrera" value="{{ $data_alumno->carrera->plan_estudios_carrera }}" placeholder="Plan de estudios del alumno" disabled>

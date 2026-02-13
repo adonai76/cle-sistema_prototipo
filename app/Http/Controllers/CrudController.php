@@ -278,6 +278,7 @@ class CrudController extends Controller
         //Datos de alumno
         $alumno->id_nivel = $request->nivel;
         $alumno->matricula_alumno = $request->matricula_alumno;
+        $alumno->id_carrera = $request->carrera_alumno;
         $alumno->semestre_alumno = $request->semestre_alumno;
         $alumno->nombre_alumno = $request->nombre_alumno;
         $alumno->apellidos_alumno = $request->apellidos_alumno;

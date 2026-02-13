@@ -63,7 +63,7 @@ class CrudCursosController extends Controller
             $curso->update([
                 'id_docente' => $request->docente_curso,
                 'modelo_curso' => $request->modelo_curso,
-                'modulo_curso' => $request->modulo_curso,
+                'id_nivel' => $request->modulo_curso,
                 'nombre_tms_curso' => $request->nombre_tms_curso,
                 'inicio_curso' => $request->inicio_curso,
                 'fin_curso' => $request->fin_curso,
