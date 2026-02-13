@@ -150,7 +150,7 @@
                         <span class="error">{{ $message }}</span>
                         <br>
                     @enderror
-                    <label for="verificado" value="{{ old('verificado') }}">Chek Lists:</label>
+                    <label for="verificado" value="{{ old('verificado') }}">Chek List:</label>
                     <select name="verificado" id="verificado">
                         <option value="1">Verificado</option>
                         <option value="0">No verificado</option>
@@ -187,10 +187,9 @@
                     <tr>
                         <th>Número de control</th>
                         <th>Carrera</th>
-                        <th>Semestre</th>
                         <th>Nombre</th>
-                        <th>Sexo</th>
-                        <th>Edad</th>
+                        <th>Nivel</th>
+                        <th>Checklist</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -199,10 +198,9 @@
                         <tr>
                             <td class="infor">{{ $alumno->matricula_alumno }}</td>
                             <td class="infor">{{ $alumno->carrera->nombre_carrera ?? 'Sin carrera' }}</td>
-                            <td class="infor">{{ $alumno->semestre_alumno }}</td>
                             <td class="infor">{{ $alumno->nombre_alumno }} {{ $alumno->apellidos_alumno }}</td>
-                            <td class="infor">{{ $alumno->sexo_alumno }}</td>
-                            <td class="infor">{{ $alumno->edad_alumno }}</td>
+                            <td class="infor">{{ $alumno->nivel->nombre_nivel }} ({{ $alumno->nivel->mcr_nivel }})</td>
+                            <td class="infor">{{ $alumno->liberado == 1 ? 'Verificado' : 'No verificado' }}</td>
                             <td>
                                 <div class="gestionar">
                                     <form method="GET" action="{{ route('admin.actualiza_usuario', $alumno->id_usuario) }}">

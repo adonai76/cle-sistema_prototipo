@@ -79,4 +79,21 @@ class KardexController extends Controller
 
         return redirect()->back()->with('success', 'Calificaciones actualizadas correctamente.');
     }
+
+    public function updatePeriodo(Request $request, $id_kardex){
+        $request->validate([
+            'periodo' => 'required|string|max:255',
+        ]);
+
+        $kardex = Kardex::find($id_kardex);
+
+        if (!$kardex) {
+            return redirect()->back()->with('error', 'Kardex no encontrado.');
+        }
+
+        $kardex->periodo = $request->periodo;
+        $kardex->save();
+
+        return redirect()->back()->with('success', 'Periodo actualizado correctamente.');
+    }
 }
